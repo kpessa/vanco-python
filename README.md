@@ -62,7 +62,7 @@ tau = 12
 ## I. General Equation 
 
 <blockquote>
-<img src="Images/conc_equation.png"></blockquote>
+<img src="Images/conc_eqn.png"></blockquote>
 
 1. `c_inf(t)` &rArr;  If infusing, use infusion equation
 2. `c_elim(t)` &rArr; Else, use first-order elimination equation
@@ -87,12 +87,13 @@ def concentration(t):
 <blockquote>
     
 ```latex
-concentration(t) = \begin{bmatrix}
+concentration(t) \Rightarrow \begin{bmatrix}
 t_{inf,start} < t <= t_{inf,end} 
 & c_{inf}(t)\\ 
 else 
 & c_{elim}(t) 
 \end{bmatrix} 
+\:\:\:\:\:\:\:
 [1] 
 ```
 </blockquote></details>
@@ -124,7 +125,10 @@ def c_inf(t):
 <details><summary>Latex syntax</summary>
 <blockquote>
     
-c_{inf}(t) = \frac{R_0}{CL_{vanco}}(1 - e^{-K_e * t}) [2]</blockquote></details>
+'''latex
+c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\; [2]
+'''
+</blockquote></details>
     
 </details>
     
@@ -137,7 +141,14 @@ c_{inf}(t) = \frac{R_0}{CL_{vanco}}(1 - e^{-K_e * t}) [2]</blockquote></details>
 <blockquote>
 <img src="Images/celim_eqn.png"></blockquote>
 
-
+<details><summary>Latex Syntax</summary>
+<blockquote>
+    
+<code>c_{post}(t) \Rightarrow c_{max} \times e^{-K_e \times t}
+\:\:\:\:\:\:\: [3] 
+</code>
+    
+</blockquote></details>
 
 
 
