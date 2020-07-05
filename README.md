@@ -76,7 +76,7 @@ def concentration(t):
     if t_inf_start < t <= t_inf_end:
         return c_inf(t)
     else:
-        return c_post(t)
+        return c_elim(t)
 ```
 
 
@@ -134,14 +134,14 @@ c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\
 
 ```python
 
-def c_post(t):
-    return cmax * math.exp(-K_e * (t - t_inf))
+def c_post(t): 
+    return c_eoi * math.exp(-K_e * (t - t_inf))
 ```
 
 <details><summary>Latex Syntax</summary>
 <blockquote>
     
-<code>c_{elim}(t) \Rightarrow c_{max} \times e^{-K_e \times (t-t_{inf})}
+<code>c_{elim}(t) \Rightarrow c_{eoi} \times e^{-K_e \times (t-t_{inf})}
 \:\:\:\:\:\:\: [3]  
 </code>
     
@@ -155,7 +155,7 @@ plt.title(f"First-order elimination starting at Cmax={cmax:.1f}, 1hr post-infusi
 ```
 ![](Images/elmination.png)
 
-## Now, all we gotta to is plot!
+## Now, all we gotta to is plot !
 
 Since plot does not take function,
 - sample 100 points along `concentration(t)` function over 12 hrs

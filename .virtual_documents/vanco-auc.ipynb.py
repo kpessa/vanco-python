@@ -33,11 +33,11 @@ plt.tight_layout()
 plt.savefig("Images/cont_infusion.png")
 
 
-cmax = R_0 / CL_vanco * (1 - math.exp(-K_e * t_inf))
+c_eoi = R_0 / CL_vanco * (1 - math.exp(-K_e * t_inf))
 
 
 def  c_elim(t):
-    return cmax * math.exp(-K_e * (t - t_inf))
+    return c_eoi * math.exp(-K_e * (t - t_inf))
 
 
 X = np.linspace(t_inf,tau,100) 
@@ -45,7 +45,7 @@ Y = [ c_elim(t) for t in X]
 plt.figure(figsize = (10,6))
 plt.plot(X,Y,'--k')
 
-plt.title(f"First-order elimination starting at Cmax={cmax:.1f}, {t_inf} hr post-infusion")
+plt.title(f"First-order elimination starting at Ceoi={ceoi:.1f}, {t_inf} hr post-infusion")
 plt.style.use(plt.style.available[8])
 plt.xlabel("Hours")
 plt.ylabel("Concentration")
@@ -69,7 +69,7 @@ def labelPlot():
     plt.title('First-order Concentration Plot')
     
 def annotateInterestingPoints():
-    plt.annotate(f"Cmax: {cmax:.1f}",xy = (1,cmax),xytext = (-20,20),textcoords ='offset points')
+    plt.annotate(f"Cmax: {ceoi:.1f}",xy = (1,ceoi),xytext = (-20,20),textcoords ='offset points')
     plt.annotate(f"Cpeak: {cpeak:.1f}",(1+1,cpeak),xytext = (10,25),textcoords ='offset points')
     plt.annotate(f"Ctrough: {ctrough:.1f}",(tau-0.5,ctrough),xytext = (-70,-23),textcoords ='offset points')
     plt.annotate(f"Cmin: {cmin:.1f}",(tau,cmin),xytext = (-65,-40),textcoords ='offset points')
@@ -82,14 +82,14 @@ plt.figure(figsize = (10,6))
 plt.plot(X,Y,'--k')
 
 #interesting points
-cmax = concentration(1)
+ceoi = concentration(1)
 cpeak = concentration(1+1) # <~ wait 1? hr after infusion
 ctrough = concentration(tau-0.5) # <~ 30 min before next dose
 cmin = concentration(tau)
-plt.scatter(x=[1,1+1,tau-0.5,tau],y=[cmax,cpeak,ctrough,cmin],linewidths=8,c='k')
+plt.scatter(x=[1,1+1,tau-0.5,tau],y=[ceoi,cpeak,ctrough,cmin],linewidths=8,c='k')
 
 #annotate points
-plt.annotate(f"Cmax: {cmax:.1f}",xy = (1,cmax),xytext = (-30,20),textcoords ='offset points')
+plt.annotate(f"Ceoi: {ceoi:.1f}",xy = (1,ceoi),xytext = (-30,20),textcoords ='offset points')
 plt.annotate(f"Cpeak: {cpeak:.1f}",(1+1,cpeak),xytext = (10,25),textcoords ='offset points')
 plt.annotate(f"Ctrough: {ctrough:.1f}",(tau-0.5,ctrough),xytext = (-70,-23),textcoords ='offset points')
 plt.annotate(f"Cmin: {cmin:.1f}",(tau,cmin),xytext = (-65,-40),textcoords ='offset points')
