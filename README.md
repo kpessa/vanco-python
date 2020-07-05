@@ -101,7 +101,13 @@ First, we need to get the equation for concentration while infusing
 
 - The concentration while infusing at time t, `c_inf(t)` is: 
 
-### \\[c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\; [2] \\]
+![](Images/cinf_eqn.png)
+
+<details><summary>Latex Syntax</summary>
+```latex    
+\\[c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\; [2] \\]
+```</details>
+    
 
 <blockquote>
     - where <code>R_0</code> (The <strong>rate</strong> of infusion) is: 
