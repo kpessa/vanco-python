@@ -8,9 +8,7 @@ t_inf = 1 # hrs
 # Ke of 0.100 ~ 105 mL/min CrCl using 1985 Matze eqn
 K_e = 0.100 # -> t1_2 = 6.9 hrs 
 V_d = 45.5 # L <- 70 * 0.65
-
-
-(3.66 + (105*0.689))*(0.06/45.5)
+tau = 12
 
 
 def c_inf(t):
@@ -19,6 +17,20 @@ def c_inf(t):
 
 R_0 = Dose / t_inf
 CL_vanco = K_e * V_d
+
+
+X = np.linspace(0,tau,100) 
+Y = [c_inf(t) for t in X]
+plt.figure(figsize = (10,6))
+plt.plot(X,Y)
+
+plt.title("Continuous infusion over 12 hrs")
+plt.style.use(plt.style.available[8])
+plt.xlabel("Hours")
+plt.ylabel("Concentration")
+plt.ylim(0,200)
+plt.tight_layout()
+plt.savefig("Images/cont_infusion.png")
 
 
 cmax = R_0 / CL_vanco * (1 - math.exp(-K_e * t_inf))
@@ -43,29 +55,39 @@ def labelPlot():
     plt.title('First-order Concentration Plot')
     
 def annotateInterestingPoints():
-    plt.annotate(f"Cmax: {cmax:.1f}",xy = (1,cmax),xytext = (0,10),textcoords ='offset points')
-    plt.annotate(f"Cpeak: {cpeak:.1f}",(1+1,cpeak),xytext = (5,5),textcoords ='offset points')
-    plt.annotate(f"Ctrough: {ctrough:.1f}",(tau-0.5,ctrough),xytext = (-70,-15),textcoords ='offset points')
-    plt.annotate(f"Cmin: {cmin:.1f}",(tau,cmin),xytext = (-50,-30),textcoords ='offset points')
+    plt.annotate(f"Cmax: {cmax:.1f}",xy = (1,cmax),xytext = (-20,20),textcoords ='offset points')
+    plt.annotate(f"Cpeak: {cpeak:.1f}",(1+1,cpeak),xytext = (10,25),textcoords ='offset points')
+    plt.annotate(f"Ctrough: {ctrough:.1f}",(tau-0.5,ctrough),xytext = (-70,-23),textcoords ='offset points')
+    plt.annotate(f"Cmin: {cmin:.1f}",(tau,cmin),xytext = (-65,-40),textcoords ='offset points')
 
 
 X = np.linspace(0,12,100) 
 Y = [concentration(t) for t in X]
-
-
 plt.figure(figsize = (10,6))
 
-plt.plot(X,Y)
+plt.plot(X,Y,'--k')
 
 #interesting points
-tau = 12
 cmax = concentration(1)
 cpeak = concentration(1+1) # <~ wait 1? hr after infusion
 ctrough = concentration(tau-0.5) # <~ 30 min before next dose
 cmin = concentration(tau)
-plt.scatter(x=[1,1+1,tau-0.5,tau],y=[cmax,cpeak,ctrough,cmin])
-annotateInterestingPoints()
-labelPlot()
+plt.scatter(x=[1,1+1,tau-0.5,tau],y=[cmax,cpeak,ctrough,cmin],linewidths=8,c='k')
+
+#annotate points
+plt.annotate(f"Cmax: {cmax:.1f}",xy = (1,cmax),xytext = (-30,20),textcoords ='offset points')
+plt.annotate(f"Cpeak: {cpeak:.1f}",(1+1,cpeak),xytext = (10,25),textcoords ='offset points')
+plt.annotate(f"Ctrough: {ctrough:.1f}",(tau-0.5,ctrough),xytext = (-70,-23),textcoords ='offset points')
+plt.annotate(f"Cmin: {cmin:.1f}",(tau,cmin),xytext = (-65,-40),textcoords ='offset points')
+
+#stylize plot
+plt.style.use(plt.style.available[8])
+plt.title("First-order elimination concentration plot")
+plt.xlabel("Hours")
+plt.ylabel("Concentration")
+plt.ylim(0,30)
+plt.tight_layout()
+plt.savefig("Images/onedose.png")
 
 
 
