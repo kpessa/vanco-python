@@ -62,7 +62,7 @@ tau = 12
 ## I. General Equation 
 
 <blockquote>
-<img src="Images/conc_equation.png" width="75%"></blockquote>
+<img src="Images/conc_equation.png"></blockquote>
 
 1. `c_inf(t)` &rArr;  If infusing, use infusion equation
 2. `c_elim(t)` &rArr; Else, use first-order elimination equation
@@ -106,7 +106,7 @@ First, we need to get the equation for concentration while infusing
 - The concentration while infusing at time t, `c_inf(t)` is: 
 
 <blockquote>
-<img src="Images/cinf_eqn.png" width="55%"></blockquote>
+<img src="Images/cinf_eqn.png"></blockquote>
         
 <details><summary>Python Code</summary>
 
@@ -135,7 +135,7 @@ c_{inf}(t) = \frac{R_0}{CL_{vanco}}(1 - e^{-K_e * t}) [2]</blockquote></details>
 - After infusing, now, we need to start using an elimination equation.  Here's the 1st-order elimination equation.
 
 <blockquote>
-<img src="Images/celim_eqn.png" width="50%"></blockquote>
+<img src="Images/celim_eqn.png"></blockquote>
 
 
 
