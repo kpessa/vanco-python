@@ -5,8 +5,12 @@ import matplotlib.pyplot as plt
 
 Dose = 1000 # mgs
 t_inf = 1 # hrs
-K_e = 0.100 
-V_d = 50 # L
+# Ke of 0.100 ~ 105 mL/min CrCl using 1985 Matze eqn
+K_e = 0.100 # -> t1_2 = 6.9 hrs 
+V_d = 45.5 # L <- 70 * 0.65
+
+
+(3.66 + (105*0.689))*(0.06/45.5)
 
 
 def c_inf(t):
