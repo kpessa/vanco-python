@@ -36,15 +36,29 @@ plt.savefig("Images/cont_infusion.png")
 cmax = R_0 / CL_vanco * (1 - math.exp(-K_e * t_inf))
 
 
-def c_post(t):
+def  c_elim(t):
     return cmax * math.exp(-K_e * (t - t_inf))
+
+
+X = np.linspace(t_inf,tau,100) 
+Y = [ c_elim(t) for t in X]
+plt.figure(figsize = (10,6))
+plt.plot(X,Y,'--k')
+
+plt.title(f"First-order elimination starting at Cmax={cmax:.1f}, {t_inf} hr post-infusion")
+plt.style.use(plt.style.available[8])
+plt.xlabel("Hours")
+plt.ylabel("Concentration")
+plt.ylim(0,25)
+plt.tight_layout()
+plt.savefig("Images/elmination.png")
 
 
 def concentration(t):
     if t <= t_inf:
         return c_inf(t)
     else:
-        return c_post(t)
+        return  c_elim(t)
 
 
 def labelPlot():

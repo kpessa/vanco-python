@@ -146,7 +146,15 @@ def c_post(t):
 </code>
     
 </blockquote></details>
- 
+
+```python
+X = np.linspace(t_inf,tau,100) 
+Y = [c_post(t) for t in X]
+plt.plot(X,Y)
+plt.title(f"First-order elimination starting at Cmax={cmax:.1f}, 1hr post-infusion")
+```
+![](Images/elmination.png)
+
 ## Now, all we gotta to is plot!
 
 Since plot does not take function,
@@ -155,5 +163,7 @@ Since plot does not take function,
 ```python
 X = np.linspace(0,12,100) 
 Y = [concentration(t) for t in X]
-```
 
+plt.plot(X,Y)
+``` 
+![](Images/onedose.png) 
