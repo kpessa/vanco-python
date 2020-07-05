@@ -68,7 +68,7 @@ tau = 12
 2. `c_elim(t)` &rArr; Else, use first-order elimination equation
 
     
-**Python Code**
+**In Python:**
     
 ```python
 # General concentration equation
@@ -94,9 +94,7 @@ else
 [1] 
 ```
 </blockquote></details>
-
-</details>
-                              
+                
 ### a.) Infusion Equation
 
 First, we need to get the equation for concentration while infusing
@@ -106,19 +104,14 @@ First, we need to get the equation for concentration while infusing
 <blockquote>
 <img src="Images/cinf_eqn.png"></blockquote>
         
-<details><summary>Python Code</summary>
-
 **In Python:**
-
-<blockquote>
     
 ```python
 # Infusion Equation
 def c_inf(t):
     return R_0 / CL_vanco * (1 - math.exp(-K_e * t))
 ```
-</blockquote>
-    
+  
 <details><summary>Latex syntax</summary>
 <blockquote>
     
@@ -127,7 +120,6 @@ c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\
 '''
 </blockquote></details>
     
-</details>
     
 ![](Images/cont_infusion.png)
     
@@ -138,6 +130,14 @@ c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\
 <blockquote>
 <img src="Images/celim_eqn.png"></blockquote>
 
+**In Python:**
+
+```python
+
+def c_post(t):
+    return cmax * math.exp(-K_e * (t - t_inf))
+```
+
 <details><summary>Latex Syntax</summary>
 <blockquote>
     
@@ -147,7 +147,13 @@ c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\
     
 </blockquote></details>
  
+## Now, all we gotta to is plot!
 
+Since plot does not take function,
+- sample 100 points along `concentration(t)` function over 12 hrs
 
-
+```python
+X = np.linspace(0,12,100) 
+Y = [concentration(t) for t in X]
+```
 
