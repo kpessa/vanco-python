@@ -101,34 +101,38 @@ First, we need to get the equation for concentration while infusing
 
 - The concentration while infusing at time t, `c_inf(t)` is: 
 
+### \\[c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\; [2] \\]
+
 <blockquote>
-<img src="Images/cinf_eqn.png"></blockquote>
-        
+    - where <code>R_0</code> (The <strong>rate</strong> of infusion) is: 
+ \\[R_0 = \frac{Dose}{T_{inf}} \\]
+- and <code>CL_vanco</code> (Vancomycin <strong>clearance</strong>) is: \\[CL_{vanco} = K_e \times V_d\\]
+</blockquote>
+
 **In Python:**
-    
+     
 ```python
 # Infusion Equation
 def c_inf(t):
     return R_0 / CL_vanco * (1 - math.exp(-K_e * t))
 ```
-  
-<details><summary>Latex syntax</summary>
-<blockquote>
-    
-'''latex
-c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\; [2]
-'''
-</blockquote></details>
-    
-    
+        
 ![](Images/cont_infusion.png)
-    
+
+- as this demonstration shows, if we continued infusing a 1,000 mg dose over 12 hours instead of 1 hour, we could get a level up in the 100's!!
+
 ### b.) Elimination Equation
 
 - After infusing, now, we need to start using an elimination equation.  Here's the 1st-order elimination equation.
 
+### \\[c_{elim}(t) \Rightarrow c_{eoi} \times e^{-K_e \times (t-t_{inf})}
+\:\:\:\:\:\:\: [3]\\]
+
+
 <blockquote>
-<img src="Images/celim_eqn.png"></blockquote>
+- where <code>c_eoi</code> is the <strong><em>concentration at the end of infusion</strong></em> <code>Tinf = t</code>
+\\[c_{eoi}(t=Tinf) = \frac{R_0}{CL_{vanco}}(1 - e^{-K_e * Tinf}) \\]
+</blockquote>
 
 **In Python:**
 
@@ -138,14 +142,7 @@ def c_post(t):
     return c_eoi * math.exp(-K_e * (t - t_inf))
 ```
 
-<details><summary>Latex Syntax</summary>
-<blockquote>
-    
-<code>c_{elim}(t) \Rightarrow c_{eoi} \times e^{-K_e \times (t-t_{inf})}
-\:\:\:\:\:\:\: [3]  
-</code>
-    
-</blockquote></details>
+
 
 ```python
 X = np.linspace(t_inf,tau,100) 

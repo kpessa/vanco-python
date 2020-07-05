@@ -22,13 +22,17 @@ CL_vanco = K_e * V_d
 X = np.linspace(0,tau,100) 
 Y = [c_inf(t) for t in X]
 plt.figure(figsize = (10,6))
-plt.plot(X,Y,'--k')
+plt.plot(X,Y,'--k',alpha=0.5)
 
 plt.title("Continuous infusion over 12 hrs")
 plt.style.use(plt.style.available[8])
+plt.grid(alpha=0.2)
 plt.xlabel("Hours")
 plt.ylabel("Concentration")
 plt.ylim(0,200)
+plt.scatter([1,12],[c_inf(1),c_inf(12)],c="k",linewidths=10)
+plt.annotate(f"Ceoi = {c_inf(1):.1f}", xy=(1,c_inf(1)), size=25, xytext = (-60,70), textcoords ='offset points')
+plt.annotate(f"Cfinal = {c_inf(12):.1f}", xy=(12,c_inf(12)), size=25, xytext = (-140,30), textcoords ='offset points')
 plt.tight_layout()
 plt.savefig("Images/cont_infusion.png")
 
