@@ -103,18 +103,6 @@ First, we need to get the equation for concentration while infusing
 
 ![](Images/cinf_eqn.png)
 
-<details><summary>Latex Syntax</summary>
-```latex    
-\\[c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\; [2] \\]
-```</details>
-    
-
-<blockquote>
-    - where <code>R_0</code> (The <strong>rate</strong> of infusion) is: 
- \\[R_0 = \frac{Dose}{T_{inf}} \\]
-- and <code>CL_vanco</code> (Vancomycin <strong>clearance</strong>) is: \\[CL_{vanco} = K_e \times V_d\\]
-</blockquote>
-
 **In Python:**
      
 ```python
@@ -122,6 +110,45 @@ First, we need to get the equation for concentration while infusing
 def c_inf(t):
     return R_0 / CL_vanco * (1 - math.exp(-K_e * t))
 ```
+
+<details><summary>Latex Syntax</summary>
+> <code>\\[c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\; [2] \\]</code>
+</details>
+
+-----
+
+#### 1. Rate of Infusion (R_0)
+* Where <code>R_0</code> (The <strong>rate</strong> of infusion) is:     
+
+<img src=Images/rate.png>
+
+**In Python:**
+```python 
+#Rate of Infusion
+R_0 = Dose / t_inf
+```
+
+> <details><summary>Latex Syntax</summary> 
+> <code>\\[R_0 = \frac{Dose}{T_{inf}} \\]</code></details>
+
+-----
+
+#### 2. Vancomycin Clearance (CLvanco)
+* and <code>CL_vanco</code> (Vancomycin <strong>clearance</strong>) is: 
+
+<img src=Images/clvanco.png>
+ 
+**In Python:**
+```python 
+#Vancomycin Clearance
+CL_vanco = K_e * V_d
+```
+ 
+> <details><summary>Latex Syntax</summary>
+> <code>\\[CL_{vanco} = K_e \times V_d\\]</code></details>
+
+-----
+
         
 ![](Images/cont_infusion.png)
 
@@ -130,6 +157,9 @@ def c_inf(t):
 ### b.) Elimination Equation
 
 - After infusing, now, we need to start using an elimination equation.  Here's the 1st-order elimination equation.
+
+
+> ![](Images/celim_eqn.png)
 
 ### \\[c_{elim}(t) \Rightarrow c_{eoi} \times e^{-K_e \times (t-t_{inf})}
 \:\:\:\:\:\:\: [3]\\]
