@@ -20,10 +20,10 @@
 ![](Images/onedose.png)
 
 **External Links**
-1. ASHP, IDSA, PIDSA 2020 Joint guidelines <a ref="https://academic.oup.com/ajhp/article/77/11/835/5810200"> &rarr; Link to journal article &larr;</a>
+1. ASHP, IDSA, PIDSA 2020 Joint guidelines <https://academic.oup.com/ajhp/article/77/11/835/5810200"> 
 2. RxKinetics: <http://www.rxkinetics.com/vanmodel.html>
 3. Vancopk: <https://www.vancopk.com/vanco-kinetics-review/>
-4. Clinical Pharmacokinetics, 6th Edition <a ref="https://store.ashp.org/Default.aspx?TabID=251&productId=514496146"> &rarr; ASHP store link &larr;</a>
+4. Clinical Pharmacokinetics, 6th Edition <https://store.ashp.org/Default.aspx?TabID=251&productId=514496146">
 
 
 <details><summarY>Setting up python</summarY><blockquote>
