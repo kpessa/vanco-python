@@ -20,10 +20,10 @@
 ![](Images/onedose.png)
 
 **External Links**
-1. ASHP, IDSA, PIDSA 2020 Joint guidelines <a src=https://academic.oup.com/ajhp/article/77/11/835/5810200>&rarr; <ins>Link to journal article</ins> &larr;</a>
+1. ASHP, IDSA, PIDSA 2020 Joint guidelines <a src="https://academic.oup.com/ajhp/article/77/11/835/5810200">&rarr; >Link to journal article &larr;</a>
 2. RxKinetics: <http://www.rxkinetics.com/vanmodel.html>
 3. Vancopk: <https://www.vancopk.com/vanco-kinetics-review/>
-4. Clinical Pharmacokinetics, 6th Edition <a src="https://store.ashp.org/Default.aspx?TabID=251&productId=514496146">&rarr; <ins>ASHP store link</ins> &larr;</a>
+4. Clinical Pharmacokinetics, 6th Edition <a src="https://store.ashp.org/Default.aspx?TabID=251&productId=514496146">&rarr; ASHP store link &larr;</a>
 
 
 <details><summarY>Setting up python</summarY><blockquote>
@@ -133,7 +133,7 @@ R_0 = Dose / t_inf
 
 -----
 
-#### 2. Vancomycin Clearance (CLvanco)
+#### 2. Vancomycin Clearance (CL_vanco)
 * and <code>CL_vanco</code> (Vancomycin <strong>clearance</strong>) is: 
 
 <img src=Images/clvanco.png>
@@ -160,23 +160,19 @@ CL_vanco = K_e * V_d
 
 
 > ![](Images/celim_eqn.png)
+> - where <code>c_eoi</code> is the <strong><em>concentration at the end of infusion</strong></em> <code>Tinf = t</code>
 
-### \\[c_{elim}(t) \Rightarrow c_{eoi} \times e^{-K_e \times (t-t_{inf})}
-\:\:\:\:\:\:\: [3]\\]
-
-
-<blockquote>
-- where <code>c_eoi</code> is the <strong><em>concentration at the end of infusion</strong></em> <code>Tinf = t</code>
-\\[c_{eoi}(t=Tinf) = \frac{R_0}{CL_{vanco}}(1 - e^{-K_e * Tinf}) \\]
-</blockquote>
 
 **In Python:**
 
 ```python
 
-def c_post(t): 
+def c_elim(t): 
     return c_eoi * math.exp(-K_e * (t - t_inf))
 ```
+
+> <details><summary>Latex Syntax</summary>
+> <code> \\[c_{elim}(t) \Rightarrow c_{eoi} \times e^{-K_e \times (t-t_{inf})} \:\:\:\:\:\:\: [3]\\]</code></details>
 
 
 
