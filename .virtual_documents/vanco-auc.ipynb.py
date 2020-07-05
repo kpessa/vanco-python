@@ -22,7 +22,7 @@ CL_vanco = K_e * V_d
 X = np.linspace(0,tau,100) 
 Y = [c_inf(t) for t in X]
 plt.figure(figsize = (10,6))
-plt.plot(X,Y)
+plt.plot(X,Y,'--k')
 
 plt.title("Continuous infusion over 12 hrs")
 plt.style.use(plt.style.available[8])

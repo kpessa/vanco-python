@@ -127,26 +127,19 @@ def c_inf(t):
 c_{inf}(t) = \frac{R_0}{CL_{vanco}}(1 - e^{-K_e * t}) [2]</blockquote></details>
     
 </details>
-
-<details><summary>Plot</summary>
     
 ![](Images/cont_infusion.png)
-
+    
 ### b.) Elimination Equation
 
 - After infusing, now, we need to start using an elimination equation.  Here's the 1st-order elimination equation.
 
-    ![](Images/celim_eqn.png)
+<blockquote>
+<img src="Images/celim_eqn.png" width="50%"></blockquote>
 
 
-### Random PK Variables
 
-```
-Dose = 1000 # mgs
-t_inf = 1 # hrs
-K_e = 0.100 
-V_d = 50 # L
-```
+
 
 
 
