@@ -68,9 +68,7 @@ tau = 12
 2. `c_elim(t)` &rArr; Else, use first-order elimination equation
 
     
-<details><summary>Python Code</summary>
-
-<blockquote>
+**Python Code**
     
 ```python
 # General concentration equation
@@ -81,7 +79,6 @@ def concentration(t):
         return c_post(t)
 ```
 
-</blockquote>
 
 <details><summary>Latex Syntax</summary>
 <blockquote>
@@ -144,12 +141,12 @@ c_{inf}(t) \Rightarrow \frac{R_0}{CL_{vanco}}(1 - e^{-K_e \times t}) \:\;\;\;\;\
 <details><summary>Latex Syntax</summary>
 <blockquote>
     
-<code>c_{post}(t) \Rightarrow c_{max} \times e^{-K_e \times t}
-\:\:\:\:\:\:\: [3] 
+<code>c_{elim}(t) \Rightarrow c_{max} \times e^{-K_e \times (t-t_{inf})}
+\:\:\:\:\:\:\: [3]  
 </code>
     
 </blockquote></details>
-
+ 
 
 
 
